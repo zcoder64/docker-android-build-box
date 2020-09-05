@@ -11,7 +11,7 @@ ENV TZ=America/Los_Angeles
 ENV ANDROID_SDK_TOOLS_VERSION="4333796"
 
 # Get the latest version from https://developer.android.com/ndk/downloads/index.html
-ENV ANDROID_NDK_VERSION="r21c"
+ENV ANDROID_NDK_VERSION="r21d"
 
 # nodejs version
 ENV NODE_VERSION="12.x"
@@ -144,12 +144,7 @@ RUN echo "platform tools" && \
 RUN echo "build tools 25-30" && \
     yes | "$ANDROID_HOME"/tools/bin/sdkmanager \
         "build-tools;30.0.0" \
-        "build-tools;29.0.3" "build-tools;29.0.2" \
-        "build-tools;28.0.3" "build-tools;28.0.2" \
-        "build-tools;27.0.3" "build-tools;27.0.2" "build-tools;27.0.1" \
-        "build-tools;26.0.2" "build-tools;26.0.1" "build-tools;26.0.0" \
-        "build-tools;25.0.3" "build-tools;25.0.2" \
-        "build-tools;25.0.1" "build-tools;25.0.0" > /dev/null
+        "build-tools;29.0.3" "build-tools;29.0.2" > /dev/null
 
 RUN echo "emulator" && \
     yes | "$ANDROID_HOME"/tools/bin/sdkmanager "emulator" > /dev/null
