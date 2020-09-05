@@ -1,6 +1,6 @@
 # Docker Android Build Box
 
-[![docker icon](https://dockeri.co/image/mingc/android-build-box)](https://hub.docker.com/r/mingc/android-build-box/)
+[![docker icon](https://dockeri.co/image/zcoder64/android-build-box)](https://hub.docker.com/r/zcoder64/android-build-box/)
 [![Build Status](https://travis-ci.org/mingchen/docker-android-build-box.svg?branch=master)](https://travis-ci.org/mingchen/docker-android-build-box)
 
 
@@ -15,20 +15,12 @@ It includes the following components:
 
 * Ubuntu 18.04
 * Android SDKs
-  * 25
-  * 26
-  * 27
-  * 28
   * 29
   * 30
 * Android build tools:
-  * 25.0.0 25.0.1 25.0.2 25.0.3
-  * 26.0.0 26.0.1 26.0.2
-  * 27.0.1 27.0.2 27.0.3
-  * 28.0.1 28.0.2 28.0.3
   * 29.0.2 29.0.3
   * 30.0.0
-* Android NDK r21
+* Android NDK r21d
 * Android Emulator
 * TestNG
 * Python 2, Python 3
@@ -41,16 +33,16 @@ It includes the following components:
 
 ## Pull Docker Image
 
-The docker image is publicly automated build on [Docker Hub](https://hub.docker.com/r/mingc/android-build-box/)
+The docker image is publicly automated build on [Docker Hub](https://hub.docker.com/r/zcoder64/android-build-box/)
 based on the Dockerfile in this repo, so there is no hidden stuff in it. To pull the latest docker image:
 
 ```sh
-docker pull mingc/android-build-box:latest
+docker pull zcoder54/android-build-box:latest
 ```
 
 **Hint:** You can use a tag to a specific stable version,
 rather than `latest` of docker image, to avoid breaking your build.
-e.g. `mingc/android-build-box:1.19.0`.
+e.g. `zcoder64/android-build-box:1.19.0`.
 Checkout [**Tags**](#tags) (bottom of this page) to see all the available tags.
 
 ## Usage
@@ -61,13 +53,13 @@ You can use this docker image to build your Android project with a single docker
 
 ```sh
 cd <android project directory>  # change working directory to your project root directory.
-docker run --rm -v `pwd`:/project mingc/android-build-box bash -c 'cd /project; ./gradlew build'
+docker run --rm -v `pwd`:/project zcoder64/android-build-box bash -c 'cd /project; ./gradlew build'
 ```
 
 Run docker image with interactive bash shell:
 
 ```sh
-docker run -v `pwd`:/project -it mingc/android-build-box bash
+docker run -v `pwd`:/project -it zcoder64/android-build-box bash
 ```
 
 ### Build an Android project with [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines)
@@ -77,7 +69,7 @@ you can simply specify this docker image.
 Here is an example of `bitbucket-pipelines.yml`:
 
 ```yml
-image: mingc/android-build-box:latest
+image: zcoder64/android-build-box:latest
 
 pipelines:
   default:
@@ -109,7 +101,7 @@ jobs:
   build:
 
     runs-on: ubuntu-18.04
-    container: mingc/android-build-box:latest
+    container: zcoder64/android-build-box:latest
 
     steps:
     - uses: actions/checkout@v2
@@ -182,7 +174,7 @@ docker build -t android-build-box .
 ## Tags
 
 You can use a tag to a specific stable version, rather than `latest` of docker image,
-to avoid breaking your build. For example `mingc/android-build-box:1.19.0`
+to avoid breaking your build. For example `zcoder64/android-build-box:1.19.0`
 
 **Note**: versions `1.0.0` up to `1.17.0` included every single Build Tool version and every
 Android Platform version available. This generated large Docker images, around 5 GB.
